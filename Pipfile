@@ -1,0 +1,41 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+channels = "*"
+django = "*"
+django-extensions = "*"
+django-filter = "*"
+django-guardian = "*"
+djangorestframework = "*"
+markdown = "*"
+pygments = "*"
+pyyaml = "*"
+sentry-sdk = "*"
+uritemplate = "*"
+
+[dev-packages]
+bandit = "*"
+black = "*"
+django-debug-toolbar = "*"
+django-stubs = "*"
+django-stubs-ext = "*"
+djangorestframework-stubs = "*"
+ipython = "*"
+isort = "*"
+mypy = "*"
+pre-commit = "*"
+pylint = "*"
+pylint-django = "*"
+pytest = "*"
+pytest-cov = "*"
+pytest-django = "*"
+pytest-xdist = "*"
+radon = "*"
+tox = "*"
+
+[requires]
+python_version = "3.10"
+python_full_version = "3.10.8"
