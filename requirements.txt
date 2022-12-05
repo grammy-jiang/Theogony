@@ -1,0 +1,11 @@
+channels
+django
+django-extensions
+django-filter
+django-guardian
+djangorestframework
+markdown
+pygments
+pyyaml
+sentry-sdk
+uritemplate
