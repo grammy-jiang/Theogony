@@ -34,3 +34,15 @@ repos:
         language: system
         types:
         -   python
+    -   id: bandit
+        name: bandit
+        entry: bandit
+        language: system
+        types:
+        -   python
+    -   id: radon
+        name: radon
+        entry: radon mi
+        language: system
+        types:
+            -   python
