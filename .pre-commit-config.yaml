@@ -45,4 +45,4 @@ repos:
         entry: radon mi
         language: system
         types:
-            -   python
+        -   python
