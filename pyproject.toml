@@ -41,3 +41,25 @@ load-plugins = [
 # and msvs (visual studio). You can also give a reporter class, e.g.
 # mypackage.mymodule.MyReporterClass.
 output-format = "colorized"
+
+[tool.pytest.ini_options]
+addopts = """
+    -ra
+    --cov
+    --ds=tests.settings
+"""
+
+[tool.coverage.report]
+precision = 2
+skip_covered = true
+skip_empty = true
+show_missing = true
+
+[tool.coverage.run]
+omit = [
+    "api/migrations/*",
+]
+source = [
+    "api",
+    "config",
+]
