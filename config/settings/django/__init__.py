@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+from ..utils import env
 from .allowed_hosts import *
 from .database import *
 from .i18n import *
@@ -23,10 +24,10 @@ from .templates import *
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-nz#-i@u@^hp9$t(_a1gfm50^7n*i99y!%@uy&x)58pxutpk1+k"
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env("DEBUG")
 
 ROOT_URLCONF = "config.urls"
 
