@@ -1,9 +1,3 @@
-.. image:: https://img.shields.io/github/languages/top/grammy-jiang/theogony
-   :alt: GitHub top language
-
-.. image:: https://img.shields.io/github/downloads/grammy-jiang/theogony/total
-   :alt: GitHub all releases
-
 ========
 Theogony
 ========
