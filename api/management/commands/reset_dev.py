@@ -11,13 +11,10 @@ from typing import Any, Optional, TypeVar
 from django.apps import AppConfig as _AppConfig
 from django.apps import apps
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
 
 AppConfig = TypeVar("AppConfig", bound=_AppConfig)
-
-User = get_user_model()
 
 MIGRATION_SCRIPTS_KEEP: set[Path] = set()
 
@@ -57,18 +54,20 @@ class Command(BaseCommand):
         )
         database: dict[str, Any]
         for database in settings.DATABASES.values():
-            if (
-                database["ENGINE"] == "django.db.backends.sqlite3"
-                and database["NAME"].is_file()
-            ):
+            if database["ENGINE"] != "django.db.backends.sqlite3":
+                continue
+            try:
                 database["NAME"].unlink()
+            except FileNotFoundError:
+                self.stdout.write(
+                    self.style.ERROR(f"Database does not exist: {database['NAME']}")
+                )
+            else:
                 self.stdout.write(
                     self.style.SUCCESS(
                         f"Remove existed sqlite3 database: {database['NAME']}"
                     )
                 )
-                continue
-            raise TypeError("Database Type is not able to remove")
         return self
 
     def remove_migration_scripts(self) -> Command:
