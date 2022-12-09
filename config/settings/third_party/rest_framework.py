@@ -4,4 +4,9 @@ Django REST framework
 """
 from ..django import INSTALLED_APPS
 
-INSTALLED_APPS.append("rest_framework")
+INSTALLED_APPS.extend(
+    (
+        "rest_framework",
+        "rest_framework_json_api",
+    )
+)
