@@ -706,3 +706,4 @@ $RECYCLE.BIN/
 
 */migrations
 *.http
+*.private.env.json
