@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from ..utils import env
 from .allowed_hosts import *
+from .authentication import *
 from .database import *
 from .i18n import *
 from .installed_apps import *
