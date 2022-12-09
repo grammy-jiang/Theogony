@@ -7,4 +7,10 @@ Router
 """
 from rest_framework import routers
 
+from .viewsets import ContentTypeViewSet, GroupViewSet, PermissionViewSet, UserViewSet
+
 router = routers.DefaultRouter()
+router.register("contenttypes", ContentTypeViewSet)
+router.register("groups", GroupViewSet)
+router.register("permissions", PermissionViewSet)
+router.register("users", UserViewSet)
