@@ -676,11 +676,11 @@
         },
         "pathspec": {
             "hashes": [
-                "sha256:88c2606f2c1e818b978540f73ecc908e13999c6c3a383daf3705652ae79807a5",
-                "sha256:8f6bf73e5758fd365ef5d58ce09ac7c27d2833a8d7da51712eac6e27e35141b0"
+                "sha256:3c95343af8b756205e2aba76e843ba9520a24dd84f68c22b9f93251507509dd6",
+                "sha256:56200de4077d9d0791465aa9095a01d421861e405b5096955051deefd697d6f6"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==0.10.2"
+            "version": "==0.10.3"
         },
         "pbr": {
             "hashes": [
@@ -958,11 +958,11 @@
         },
         "tox": {
             "hashes": [
-                "sha256:b6cc2ecdb819a93131f46f1f6079cc3263a893ef021b98da83b53ed31e96dbd8",
-                "sha256:f07f8ccfc7254c2fe6711903221a81f2a5af2b91c90535bf7eff4d410a0f205d"
+                "sha256:11a2f5e18ac76b544f7006f6959821ec39bfe24e42cbf990fc0e212c1a07d092",
+                "sha256:e71aee9e77646791c00e226301d5ef8d26cf68ac46b1825d3d46ba538518c235"
             ],
             "index": "pypi",
-            "version": "==4.0.4"
+            "version": "==4.0.5"
         },
         "traitlets": {
             "hashes": [
