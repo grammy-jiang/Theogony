@@ -8,6 +8,7 @@ django-polymorphic==3.1.0
 djangorestframework==3.14.0
 djangorestframework-jsonapi==6.0.0
 markdown==3.4.1
+psycopg2==2.9.5
 pygments==2.13.0
 pyyaml==6.0
 sentry-sdk==1.11.1
