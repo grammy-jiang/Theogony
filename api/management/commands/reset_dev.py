@@ -13,6 +13,7 @@ from django.apps import apps
 from django.conf import settings
 from django.core.management import call_command
 from django.core.management.base import BaseCommand
+from django.db import connection
 
 AppConfig = TypeVar("AppConfig", bound=_AppConfig)
 
@@ -54,20 +55,38 @@ class Command(BaseCommand):
         )
         database: dict[str, Any]
         for database in settings.DATABASES.values():
-            if database["ENGINE"] != "django.db.backends.sqlite3":
-                continue
-            try:
-                database["NAME"].unlink()
-            except FileNotFoundError:
-                self.stdout.write(
-                    self.style.ERROR(f"Database does not exist: {database['NAME']}")
-                )
-            else:
-                self.stdout.write(
-                    self.style.SUCCESS(
-                        f"Remove existed sqlite3 database: {database['NAME']}"
+            if database["ENGINE"] == "django.db.backends.sqlite3":
+                try:
+                    Path(database["NAME"]).unlink()
+                except FileNotFoundError:
+                    self.stdout.write(
+                        self.style.ERROR(f"Database does not exist: {database['NAME']}")
                     )
-                )
+                else:
+                    self.stdout.write(
+                        self.style.SUCCESS(
+                            f"Remove existed sqlite3 database: {database['NAME']}"
+                        )
+                    )
+            if database["ENGINE"] == "django.db.backends.postgresql":
+                with connection.cursor() as cursor:
+                    cursor.execute('DROP SCHEMA IF EXISTS "public" CASCADE')
+                    self.stdout.write(
+                        self.style.SUCCESS(
+                            f"The schema [public] in the database of "
+                            f'[{database["NAME"]}] is deleted',
+                        )
+                    )
+                    cursor.execute(
+                        'CREATE SCHEMA "public";'
+                        "GRANT ALL ON SCHEMA public TO public;"
+                    )
+                    self.stdout.write(
+                        self.style.SUCCESS(
+                            f"The schema [public] in the database of "
+                            f'[{database["NAME"]}] is created',
+                        )
+                    )
         return self
 
     def remove_migration_scripts(self) -> Command:
